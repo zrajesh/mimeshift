@@ -11,14 +11,14 @@ const Navbar = () => {
     }
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-3 md:p-4">
+        <Link href="/" className="flex items-center space-x-1 md:space-x-3 rtl:space-x-reverse">
             <Image
              src={MimeShiftLogo} className="h-8" alt="Flowbite Logo"
              width={40}
              height={100}
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Mime Shift</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MimeShift</span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <Button
