@@ -1,44 +1,80 @@
-"use client"
-import Image from "next/image";
 import Link from "next/link";
+import Container from "../ui/container";
 import { Button } from "../ui/button";
-import MimeShiftLogo from "@/assets/images/logo.png";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+
+const routes = [
+    {
+        href: "/image-converter",
+        label: "Image Converter"
+    },
+    {
+        href: "/video-converter",
+        label: "Video Converter"
+    }
+]
 
 const Navbar = () => {
-    const TWITTER_LINK = "https://twitter.com/izrajesh";
-    const redirectLink = (url: string) => {
-        window.open(url, "self_blank");
-    }
     return (
-        <nav className="bg-white border-gray-200 dark:bg-gray-900">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-3 md:p-4">
-        <Link href="/" className="flex items-center space-x-1 md:space-x-3 rtl:space-x-reverse">
-            <Image
-             src={MimeShiftLogo} className="h-8" alt="Flowbite Logo"
-             width={40}
-             height={100}
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MimeShift</span>
-        </Link>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <Button
-             onClick={
-                () => redirectLink(TWITTER_LINK)
-             }
-            >Twitter</Button>
-        </div>
-        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-            {/* <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                    <Link href="#" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</Link>
-                </li>
-                <li>
-                    <Link href="#" className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</Link>
-                </li>
-            </ul> */}
-        </div>
-        </div>
-        </nav>
+        <header className="sm:flex sm:justify-between py-3 px-4 border-b">
+            <Container>
+                <div
+                 className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full"
+                >
+                    <div className="flex items-center">
+                        <Sheet>
+                            <SheetTrigger>
+                                <Menu className="h-6 md:hidden w-6" />
+                            </SheetTrigger>
+                            <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                                <nav className="flex flex-col gap-4">
+                                {
+                                routes.map((route, index) => (
+                                    <Link
+                                    key={index}
+                                    href={route.href}
+                                    className="block px-2 py-1 text-lg"
+                                    >
+                                    {route.label}
+                                    </Link>
+                                ))
+                                }
+                                </nav>
+                            </SheetContent>
+                        </Sheet>
+                        <Link href="/" className="ml-4 lg:ml-0">
+                            <h1 className="text-xl font-bold">MimeShift</h1>
+                        </Link>
+                    </div>
+                    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
+                        {
+                            routes.map((route, index) => (
+                                <Button asChild key={index} variant="ghost">
+                                    <Link
+                                     href={route.href}
+                                     className="text-sm font-medium transition-colors"
+                                    >{route.label}</Link>
+                                </Button>
+                            ))
+                        }
+                    </nav>
+                    <div className="flex items-center">
+                        <Button
+                         size="sm"
+                         className="mr-2"
+                         aria-label="shopping cart"
+                        >
+                            <Link
+                             href="https://twitter.com/izrajesh"
+                             target="_blank"
+                             className="text-sm font-medium transition-colors"
+                            >Twitter</Link>
+                        </Button>
+                    </div>
+                </div>
+            </Container>
+        </header>
     );
 };
 
