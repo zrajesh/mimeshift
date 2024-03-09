@@ -3,6 +3,8 @@ import Container from "../ui/container";
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import Image from "next/image";
+import MimeShiftLogo from "@/assets/images/logo.png";
 
 const routes = [
     {
@@ -17,7 +19,7 @@ const routes = [
 
 const Navbar = () => {
     return (
-        <header className="sm:flex sm:justify-between py-3 px-4 border-b">
+        <header className="sm:flex sm:justify-between py-3 px-4 border-b border-border/40 bg-[#111]">
             <Container>
                 <div
                  className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full"
@@ -25,7 +27,7 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <Sheet>
                             <SheetTrigger>
-                                <Menu className="h-6 md:hidden w-6" />
+                                <Menu className="h-6 md:hidden w-6 text-[#FFF]" />
                             </SheetTrigger>
                             <SheetContent side="left" className="w-[300px] sm:w-[400px]">
                                 <nav className="flex flex-col gap-4">
@@ -34,7 +36,7 @@ const Navbar = () => {
                                     <Link
                                     key={index}
                                     href={route.href}
-                                    className="block px-2 py-1 text-lg"
+                                    className="block px-2 py-1 text-lg text-[#FFF]"
                                     >
                                     {route.label}
                                     </Link>
@@ -43,8 +45,14 @@ const Navbar = () => {
                                 </nav>
                             </SheetContent>
                         </Sheet>
-                        <Link href="/" className="ml-4 lg:ml-0">
-                            <h1 className="text-xl font-bold">MimeShift</h1>
+                        <Link href="/" className="ml-4 lg:ml-0 flex items-center space-x-2">
+                            <Image
+                             src={MimeShiftLogo} 
+                             alt="mime shift"
+                             width={50}
+                             height={50}
+                            />
+                            <h1 className="text-xl font-bold text-[#FFF]">MimeShift</h1>
                         </Link>
                     </div>
                     <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
@@ -53,7 +61,7 @@ const Navbar = () => {
                                 <Button asChild key={index} variant="ghost">
                                     <Link
                                      href={route.href}
-                                     className="text-sm font-medium transition-colors"
+                                     className="text-sm font-medium transition-colors text-[#FFF]"
                                     >{route.label}</Link>
                                 </Button>
                             ))
@@ -61,6 +69,7 @@ const Navbar = () => {
                     </nav>
                     <div className="flex items-center">
                         <Button
+                         variant="secondary"
                          size="sm"
                          className="mr-2"
                          aria-label="shopping cart"

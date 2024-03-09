@@ -1,10 +1,11 @@
+import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
+      <Hero />
     </main>
   );
 }
